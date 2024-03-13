@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-
+#include "../Core/Trade.h"
 int main()
 {
     std::cout << "Hello World!\n";

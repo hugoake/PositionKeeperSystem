@@ -1,8 +1,11 @@
 #pragma once
+#include "Instrument.h"
+
 struct Trade
 {
-  const int price;
+  const Instrument instrument;
+  const int quantity;
 
-  Trade(int p);
+  Trade(Instrument instrument, int price);
 };
 

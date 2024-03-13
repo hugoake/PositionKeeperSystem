@@ -1,6 +1,3 @@
 #include "Trade.h"
 
-Trade::Trade(int p) : price(p)
-{
-  
-}
+Trade::Trade(Instrument instrument, int quantity) : instrument(instrument), quantity(quantity) {}

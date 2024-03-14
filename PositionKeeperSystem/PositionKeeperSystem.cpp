@@ -3,9 +3,30 @@
 
 #include <iostream>
 #include "../Core/Trade.h"
+#include "../Core/Screen.h"
+#include <conio.h>
+#include <memory>
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    std::unique_ptr<Screen> screen = std::make_unique<HomeScreen>();
+    while(true)
+    {
+      string input;
+      std::cout << screen->toString();
+      std::cin >> input;
+      if(screen->validInput(input))
+      {
+        screen = screen->responseScreen();
+      }
+      else
+      {
+        std::cout << screen->invalidInputResponse();
+        _getch();
+      }
+
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

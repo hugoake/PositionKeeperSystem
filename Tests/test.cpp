@@ -5,7 +5,13 @@
 #include <vector>
 #include <iostream>
 
+
 const Instrument TEST_INSTRUMENT("ABB", "SEK", "Asea Brown Boveri");
+
+Trade testTrade(std::string price, unsigned int quantity)
+{
+  return Trade(TEST_INSTRUMENT, price, quantity, "Equity Desk", "Deutsche Bank", "OMX");
+}
 
 TEST(Instrument, Equality)
 {
@@ -14,11 +20,9 @@ TEST(Instrument, Equality)
     Instrument("ABB", "SEK", "Asea Brown Boveri"));
 }
 
-TEST(Trade, Equality)
+TEST(Trade, NotEquality)
 {
-  EXPECT_EQ(
-    Trade(TEST_INSTRUMENT, "1.1", 1),
-    Trade(TEST_INSTRUMENT, "1.1", 1));
+  EXPECT_FALSE(testTrade("1.1", 1) == testTrade("1.1", 1));
 }
 
 TEST(Position, Equality)
@@ -31,13 +35,15 @@ TEST(Position, Equality)
 TEST(Trade, NoBase10RoundingError)
 {
   EXPECT_EQ(
-    Trade(TEST_INSTRUMENT, "1.1", 3).value(),
-    Trade(TEST_INSTRUMENT, "3.3", 1).value());
+    testTrade("1.1", 3).value(),
+    testTrade("3.3", 1).value());
 }
 
-TEST(Position, Initialization1)
+TEST(Trade, HighResTime)
 {
-  EXPECT_EQ(
-    Position(TEST_INSTRUMENT, "3.3"),
-    Position(Trade(TEST_INSTRUMENT, "1.1", 3)));
+  auto trade1 = testTrade("1.1", 3);
+  auto trade2 = testTrade("1.1", 3);
+  EXPECT_GE(trade2.time, trade1.time);
+  EXPECT_FALSE(trade1.time == trade2.time);
 }
+

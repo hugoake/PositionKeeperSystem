@@ -130,11 +130,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Instrument.h" />
+    <ClInclude Include="Screen.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Trade.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Instrument.cpp" />
+    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Trade.cpp" />
   </ItemGroup>

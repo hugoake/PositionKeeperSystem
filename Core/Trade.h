@@ -1,7 +1,6 @@
 #pragma once
 #include "Instrument.h"
 #include <boost/multiprecision/cpp_dec_float.hpp>
-//using boost::multiprecision::cpp_dec_float_50;
 
 
 struct Trade

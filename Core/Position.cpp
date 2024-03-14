@@ -2,13 +2,22 @@
 #include <vector>
 #include <stdexcept>
 
+
 Position::Position(Instrument instrument, Trade::float_type value)
   : instrument(instrument),
     value(value) {}
 
+
+Position::Position(Instrument instrument, std::string value)
+  : instrument(instrument),
+    value(Trade::float_type(value)) // <-- Causes runtime error if value cannot be parsed.
+    {}
+
+
 Position::Position(Trade trade)
   : instrument(trade.instrument),
     value(trade.value()) {}
+
 
 Position& Position::addTrade(Trade trade)
 {
@@ -21,6 +30,7 @@ Position& Position::addTrade(Trade trade)
     throw std::invalid_argument("The trade's instrument must equal the position's instrument.");
   }
 }
+
 
 // Collapses a vector of trades into a vector of positions with distinct instruments.
 std::vector<Position> toPositions(const std::vector<Trade>& trades)

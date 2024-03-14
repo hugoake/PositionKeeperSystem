@@ -1,6 +1,7 @@
 #pragma once
 #include "Instrument.h"
 #include <boost/multiprecision/cpp_dec_float.hpp>
+#include <string>
 
 
 struct Trade
@@ -12,7 +13,10 @@ struct Trade
   const unsigned int quantity; 
 
   Trade(Instrument instrument, float_type price, unsigned int quantity);
-  
+  Trade(Instrument instrument, std::string price, unsigned int quantity);
+
+  bool operator==(Trade const&) const = default;
+
   float_type value();
 };
 

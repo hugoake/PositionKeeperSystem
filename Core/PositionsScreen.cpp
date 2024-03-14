@@ -3,6 +3,7 @@
 #include <VariadicTable.h>
 #include <sstream>
 #include "FinState.h"
+#include "MainMenuScreen.h"
 
 
 PositionsScreen::PositionsScreen(){};
@@ -13,17 +14,20 @@ PositionsScreen::PositionsScreen(std::function<string(Position)> positionGroupKe
 
 string PositionsScreen::toString(const FinState& finState)
 {
-  VariadicTable<int, int> position_table = {{"Int1", "Int2"}, 10};
-  position_table.addRow(4,4);
-  position_table.addRow(1, 2);
+  VariadicTable<string, string, string, string> position_table
+    = {{"Name", "Currency", "Issuer", "Value"}};
+  for( auto pos : finState)
+  {
+    position_table.addRow(pos.instrument.name, pos.instrument.currency, pos.instrument.issuer, pos.value.str(2, std::ios::fixed));
+  }
   std::ostringstream stream;
   position_table.print(stream);
   return  
     stream.str() + 
     "What would you like to do?\n"
     "Enter a number followed by enter to select the corresponding action.\n"
-    "(1) Group positions by currency.\n"
-    "(2) Group positions by counterparty.\n"
+    "(1) Group positions by name.\n"
+    "(2) Group positions by issuer.\n"
     "(3) Go back to main menu.\n";
 }
 
@@ -54,7 +58,15 @@ std::unique_ptr<Screen> PositionsScreen::outputScreen(string input)
   switch (int_input)
   {
   case 1:
-    return std::make_unique<PositionsScreen>([](Position position) -> std::string { return position.instrument.name; });
+    return std::make_unique<PositionsScreen>(
+      [](Position position) -> std::string{ return position.instrument.name; });
+    break;
+  case 2:
+    return std::make_unique<PositionsScreen>(
+      [](Position position) -> std::string { return position.instrument.issuer; });
+    break;
+  case 3:
+    return std::make_unique<MainMenuScreen>();
     break;
   default:
     throw std::invalid_argument("Argument 'input' is invalid.");

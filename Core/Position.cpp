@@ -38,19 +38,20 @@ std::vector<Position> toPositions(const std::vector<Trade>& trades)
   std::vector<Position> positions = {};
   for(auto trade : trades)
   {
-    bool instrument_has_occurred = false;
-    for(auto& position : positions)
-    {
-      if(trade.instrument == position.instrument)
-      {
-        position.addTrade(trade);
-        instrument_has_occurred = true;
-      }
-    }
-    if(!instrument_has_occurred)
-    {
-      positions.emplace_back(trade);
-    }
+    addTrade(positions, trade);
   }
   return positions;
+}
+
+void addTrade(std::vector<Position>& positions, Trade trade)
+{
+  for (auto& position : positions)
+  {
+    if (trade.instrument == position.instrument)
+    {
+      position.addTrade(trade);
+      return;
+    }
+  }
+  positions.emplace_back(trade);
 }

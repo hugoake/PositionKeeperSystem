@@ -19,3 +19,4 @@ struct Position
 };
 
 std::vector<Position> toPositions(const std::vector<Trade>& trades);
+void addTrade(std::vector<Position>& positions, Trade trade);

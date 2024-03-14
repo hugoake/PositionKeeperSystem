@@ -1,15 +1,18 @@
 #include "MakeTradeScreen.h"
+
+#include <iostream>
 #include <stdexcept>
 #include "FinState.h"
+#include "MainMenuScreen.h"
 
 
 string MakeTradeScreen::toString(const FinState& finState)
 {
-  return  "What would you like to do?\n"
-    "Enter a number followed by enter to select the corresponding action.\n"
-    "(1) View MakeTrade.\n"
-    "(2) Make a trade.\n"
-    "(3) Enter a new instrument.";
+  return
+    "Please enter the trade data in the format:\n"
+    "intrument_name,currency,issuer,price,quantity,acquirer,counterparty,marketplace\n"
+    "For example:\n"
+    "ABB,SEK,Asea Brown Boveri,97.00,4,Equity Desk,Deutsche Bank,OMX\n";
 }
 
 
@@ -21,23 +24,32 @@ string MakeTradeScreen::invalidInputResponse()
 
 FinState MakeTradeScreen::outputState(const FinState& finState, string input)
 {
-  return finState;
+  auto positions = finState;
+
+  string name, currency, issuer, price, quantity, acquirer, counterparty, marketplace;
+  std::stringstream stream(input);
+
+  getline(stream, name, ',');
+  if(name == "test1")
+  {
+    addTrade(positions, Trade(Instrument("ABB", "SEK", "Asea Brown Boveri"),
+      "97.00", 4, "Equity Desk", "Deutsche Bank", "OMX"));
+    return positions;
+  }
+  getline(stream, currency, ',');
+  getline(stream, issuer, ',');
+  getline(stream, price, ',');
+  getline(stream, quantity, ',');
+  getline(stream, acquirer, ',');
+  getline(stream, counterparty, ',');
+  getline(stream, marketplace, ',');
+  Trade trade(Instrument(name, currency,issuer), price, std::stoul(quantity), acquirer, counterparty, marketplace);
+  addTrade(positions, trade);
+  return positions;
 }
 
 
 std::unique_ptr<Screen> MakeTradeScreen::outputScreen(string input)
 {
-  int int_input = std::stoi(input);
-  // Could enforce/verify that std::to_string(int_input) == input
-  switch (int_input)
-  {
-  case 1:
-    return std::make_unique<MakeTradeScreen>();
-    break;
-  case 2:
-    return std::make_unique<MakeTradeScreen>();
-    break;
-  default:
-    throw std::invalid_argument("Argument 'input' is invalid.");
-  }
+  return std::make_unique<MainMenuScreen>();
 }

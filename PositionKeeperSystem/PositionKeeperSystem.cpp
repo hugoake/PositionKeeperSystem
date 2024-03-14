@@ -2,30 +2,28 @@
 //
 
 #include <iostream>
-#include "../Core/Trade.h"
-#include "../Core/Screen.h"
+#include "../Core/MainMenuScreen.h"
 #include <conio.h>
 #include <memory>
 
 int main()
 {
     std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-    std::unique_ptr<Screen> screen = std::make_unique<HomeScreen>();
+    std::unique_ptr<Screen> screen = std::make_unique<MainMenuScreen>();
     while(true)
     {
       string input;
       std::cout << screen->toString();
       std::cin >> input;
-      if(screen->validInput(input))
-      {
-        screen = screen->responseScreen();
+      try {
+        screen = screen->responseScreen(input);
       }
-      else
+      catch (...)
       {
         std::cout << screen->invalidInputResponse();
+        std::cout << "Press any key to continue.\n";
         _getch();
       }
-
     }
 }
 

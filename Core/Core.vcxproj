@@ -129,13 +129,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EnterInstrumentScreen.h" />
     <ClInclude Include="Instrument.h" />
+    <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="MakeTradeScreen.h" />
+    <ClInclude Include="PositionsScreen.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Trade.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EnterInstrumentScreen.cpp" />
     <ClCompile Include="Instrument.cpp" />
+    <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="MakeTradeScreen.cpp" />
+    <ClCompile Include="PositionsScreen.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Trade.cpp" />

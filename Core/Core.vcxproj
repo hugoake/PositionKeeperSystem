@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Hugo\source\repos\PositionKeeperSystem\boost_1_82_0</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Hugo\source\repos\PositionKeeperSystem\boost_1_82_0;C:\Users\Hugo\source\repos\variadic_table\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EnterInstrumentScreen.h" />
+    <ClInclude Include="FinState.h" />
     <ClInclude Include="Instrument.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="MakeTradeScreen.h" />

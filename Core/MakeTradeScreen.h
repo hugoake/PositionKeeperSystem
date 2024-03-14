@@ -3,8 +3,9 @@
 
 struct MakeTradeScreen : Screen
 {
-  string toString();
+  string toString(const FinState& finState);
   string invalidInputResponse();
-  std::unique_ptr<Screen> responseScreen(string input);
+  FinState outputState(const FinState& finState, string input);
+  std::unique_ptr<Screen> outputScreen(string input);
 };
 

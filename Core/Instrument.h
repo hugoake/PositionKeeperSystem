@@ -3,9 +3,9 @@
 
 struct Instrument
 {
-  const std::string name;
-  const std::string currency;
-  const std::string issuer;
+  std::string name;
+  std::string currency;
+  std::string issuer;
 
   Instrument(std::string name, std::string currency, std::string issuer);
 

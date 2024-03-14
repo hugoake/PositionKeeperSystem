@@ -5,18 +5,28 @@
 #include "../Core/MainMenuScreen.h"
 #include <conio.h>
 #include <memory>
+#include "../Core/FinState.h"
+
+void clearTerminal()
+{
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+}
 
 int main()
 {
-    std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    FinState finState = {}; // TODO: Import from file.
     std::unique_ptr<Screen> screen = std::make_unique<MainMenuScreen>();
-    while(true)
+    while(screen)
     {
+      clearTerminal();
       string input;
-      std::cout << screen->toString();
+      std::cout << screen->toString(finState);
       std::cin >> input;
       try {
-        screen = screen->responseScreen(input);
+        finState = screen->outputState(finState, input);
+        screen = screen->outputScreen(input);
+        std::cout << finState.size();
+        std::cout << screen;
       }
       catch (...)
       {

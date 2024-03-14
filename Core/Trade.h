@@ -21,15 +21,15 @@ struct Trade
   Trade(Instrument instrument,
         float_type price,
         unsigned int quantity,
-        const std::string acquirer,
-        const std::string counterparty,
-        const std::string marketplace);
+        std::string acquirer,
+        std::string counterparty,
+        std::string marketplace);
   Trade(Instrument instrument,
         std::string price,
         unsigned int quantity,
-        const std::string acquirer,
-        const std::string counterparty,
-        const std::string marketplace);
+        std::string acquirer,
+        std::string counterparty,
+        std::string marketplace);
 
   bool operator==(Trade const&) const = default;
 

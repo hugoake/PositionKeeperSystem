@@ -13,57 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Financial Data Types">
+      <UniqueIdentifier>{30af87f4-d4b4-42b7-bcab-cb375ecc3d0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screen Files">
+      <UniqueIdentifier>{03c46791-619a-4781-946a-625e0e32b0ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Trade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Instrument.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Position.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Screen.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MakeTradeScreen.h">
+      <Filter>Screen Files</Filter>
     </ClInclude>
     <ClInclude Include="MainMenuScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Screen Files</Filter>
     </ClInclude>
     <ClInclude Include="PositionsScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MakeTradeScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Screen Files</Filter>
     </ClInclude>
     <ClInclude Include="EnterInstrumentScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Screen Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Screen Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FinState.h">
+      <Filter>Financial Data Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Instrument.h">
+      <Filter>Financial Data Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Financial Data Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Trade.h">
+      <Filter>Financial Data Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Trade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Instrument.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Position.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Screen.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="EnterInstrumentScreen.cpp">
+      <Filter>Screen Files</Filter>
     </ClCompile>
     <ClCompile Include="MainMenuScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PositionsScreen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Screen Files</Filter>
     </ClCompile>
     <ClCompile Include="MakeTradeScreen.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Screen Files</Filter>
     </ClCompile>
-    <ClCompile Include="EnterInstrumentScreen.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="PositionsScreen.cpp">
+      <Filter>Screen Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Screen Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Instrument.cpp">
+      <Filter>Financial Data Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.cpp">
+      <Filter>Financial Data Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Trade.cpp">
+      <Filter>Financial Data Types</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

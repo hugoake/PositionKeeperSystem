@@ -2,6 +2,7 @@
 #include "../Core/Trade.h"
 #include "../Core/Instrument.h"
 #include "../Core/Position.h"
+#include "../Core/PositionsScreen.h"
 #include <vector>
 #include <iostream>
 
@@ -45,5 +46,11 @@ TEST(Trade, HighResTime)
   auto trade2 = testTrade("1.1", 3);
   EXPECT_GE(trade2.time, trade1.time);
   EXPECT_FALSE(trade1.time == trade2.time);
+}
+
+TEST(PositionsScreen, outputScreen)
+{
+  PositionsScreen screen = {};
+  EXPECT_NE(screen.outputScreen("1"), nullptr);
 }
 

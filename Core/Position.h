@@ -6,7 +6,7 @@
 
 struct Position
 {
-  const Instrument instrument;
+  Instrument instrument;
   Trade::float_type value;
 
   Position(Instrument instrument, Trade::float_type value);

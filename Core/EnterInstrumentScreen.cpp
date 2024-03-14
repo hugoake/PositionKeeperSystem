@@ -1,8 +1,9 @@
 #include "EnterInstrumentScreen.h"
 #include <stdexcept>
+#include "FinState.h"
 
 
-string EnterInstrumentScreen::toString()
+string EnterInstrumentScreen::toString(const FinState& finState)
 {
   return  "What would you like to do?\n"
     "Enter a number followed by enter to select the corresponding action.\n"
@@ -18,7 +19,13 @@ string EnterInstrumentScreen::invalidInputResponse()
 }
 
 
-std::unique_ptr<Screen> EnterInstrumentScreen::responseScreen(string input)
+FinState EnterInstrumentScreen::outputState(const FinState& finState, string input)
+{
+  return finState;
+}
+
+
+std::unique_ptr<Screen> EnterInstrumentScreen::outputScreen(string input)
 {
   int int_input = std::stoi(input);
   // Could enforce/verify that std::to_string(int_input) == input

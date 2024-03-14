@@ -2,15 +2,19 @@
 #include <vector>
 #include <stdexcept>
 
-Position::Position(Instrument instrument, int quantity) : instrument(instrument), quantity(quantity) {}
+Position::Position(Instrument instrument, int quantity)
+  : instrument(instrument),
+    value(quantity) {}
 
-Position::Position(Trade trade) : instrument(trade.instrument), quantity(trade.quantity) {}
+Position::Position(Trade trade)
+  : instrument(trade.instrument),
+    value(trade.value()) {}
 
 Position& Position::addTrade(Trade trade)
 {
   if (trade.instrument == this->instrument)
   {
-    this->quantity += trade.quantity;
+    this->value += trade.value();
   }
   else
   {
@@ -24,16 +28,16 @@ std::vector<Position> toPositions(const std::vector<Trade>& trades)
   std::vector<Position> positions = {};
   for(auto trade : trades)
   {
-    bool instrument_has_occured = false;
+    bool instrument_has_occurred = false;
     for(auto& position : positions)
     {
       if(trade.instrument == position.instrument)
       {
         position.addTrade(trade);
-        instrument_has_occured = true;
+        instrument_has_occurred = true;
       }
     }
-    if(!instrument_has_occured)
+    if(!instrument_has_occurred)
     {
       positions.emplace_back(trade);
     }

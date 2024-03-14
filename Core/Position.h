@@ -7,9 +7,9 @@
 struct Position
 {
   const Instrument instrument;
-  int quantity;
+  Trade::float_type value;
 
-  Position(Instrument instrument, int quantity);
+  Position(Instrument instrument, Trade::float_type value);
   Position(Trade trade);
 
   Position& addTrade(Trade trade);

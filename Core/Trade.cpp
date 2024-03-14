@@ -1,11 +1,11 @@
 #include "Trade.h"
 
-Trade::Trade(Instrument instrument, double price, unsigned int quantity)
+Trade::Trade(Instrument instrument, Trade::float_type price, unsigned int quantity)
   : instrument(instrument),
     price(quantity),
     quantity(quantity){}
 
-double Trade::value()
+Trade::float_type Trade::value()
 {
   return this->quantity * this->price;
 }

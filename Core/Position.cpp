@@ -2,9 +2,9 @@
 #include <vector>
 #include <stdexcept>
 
-Position::Position(Instrument instrument, int quantity)
+Position::Position(Instrument instrument, Trade::float_type value)
   : instrument(instrument),
-    value(quantity) {}
+    value(value) {}
 
 Position::Position(Trade trade)
   : instrument(trade.instrument),
